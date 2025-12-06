@@ -2,6 +2,7 @@ library(tidyverse)
 library(maps)
 library(sf)
 library(ggplot2)
+library(patchwork)
 
 
 # Base graph of NJ Counties -----------------------------------------------
@@ -44,3 +45,17 @@ ggplot(nj_2017_results_sf) +
     fill = "Margin win (%)",
     caption = "Source: NJ DOE"
   )
+
+# -------------------------------------------------------------------------
+
+p3 + p2 + p1
+
+
+
+
+
+
+
+
+
+
