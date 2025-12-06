@@ -80,4 +80,8 @@ p3 <-ggplot(nj_swing) +
     fill = "Margin win (%)",
     caption = "Source: NJ DOE"
   )
+library(patchwork)
+p3 + p2 + p1
+
+
 
