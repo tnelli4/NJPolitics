@@ -19,7 +19,7 @@ ggplot(nj_2025_results_sf) +
   )+
   theme_void()+
   labs(
-    title = "2015 NJ Governor Election Margin",
+    title = "2025 NJ Governor Election Margin",
     subtitle = "Democratic (blue) vs Republican (red)",
     fill = "Margin win (%)",
     caption = "Source: NJ DOE"

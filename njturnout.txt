@@ -1,0 +1,104 @@
+﻿Year,Type of Election(s) Held,Total Number of Persons Entitled to Vote,Total Number of Ballots Cast,Percentage of Ballots Cast,Election Districts
+1924,President and Vice President,1346679,1119668,83%,2558
+1925,Governor,1253909,931340,74%,2817
+1926,Senate,1275468,852610,67%,2869
+1927,,1345513,820690,61%,2887
+1928,"Delegates to National Conventions, US Senate, Governor and Congress",1811338,1581817,87%,2920
+1929,,1762803,869079,49%,3294
+1930,US Senate and Congress,1812339,1070807,59%,3322
+1931,Governor,1880165,1307321,70%,3352
+1932,"Delegates to National Convention, US Senate Vacancy and Congress",2011460,1666151,83%,3414
+1933,,1980390,1132339,57%,3409
+1934,"US Senate, Governor and Congress",1983754,1410051,71%,3488
+1935,,2004953,1322261,66%,3538
+1936,"Delegates to National Convention, US Senator and Congress",2201168,1864960,85%,3571
+1937,Governor,2145301,1506148,70%,3655
+1938,US Senate and Congress,2189536,1614660,74%,3578
+1939,,2191546,1254074,57%,3602
+1940,"Delegates to National Convention, US Senator and Congress",2361080,2019406,86%,3631
+1941,,2212057,1205411,54%,3656
+1942,US Senate and Congress,2179954,1269869,58%,3640
+1943,Governor,2134143,1173588,55%,3645
+1944,US Senate and Congress,2192115,1821187,83%,3647
+1945,,2062618,965937,47%,3663
+1946,"US Senate, Governor and Congress",2204018,1472742,67%,3668
+1947,,2216871,1164689,53%,3679
+1948,US Senate and Congress,2380295,1976213,83%,3707
+1949,Governor,2332821,1763854,76%,3710
+1950,Congress,2374680,1629032,69%,3746
+1951,,2362689,1397456,59%,3800
+1952,"Choice for President, Delegates to National Convention, U.S. Senator and Congress",2744165,2435613,89%,3850
+1953,Governor,2658666,1866078,70%,3969
+1954,US Senate and Congress,2635441,1859814,71%,3992
+1955,No National Officers to be elected,2639476,1617758,61%,4071
+1956,"Choice for President, Delegates to National Convention and Congress",2846794,2493774,88%,4160
+1957,Governor,2790973,2056451,74%,4213
+1958,US Senate and Congress,2774295,1986880,72%,4184
+1959,No National Officers to be elected,2779361,1962022,71%,4224
+1960,"Delegates to National Conventions, US Senator and Congress",3073894,2799095,91%,4284
+1961,"Governor, State Senate and General Assembly",3013718,2207931,73%,4395
+1962,Congress,2977333,2018321,68%,4461
+1963,,2984998,2077695,70%,4533
+1964,"Choice for President, Delegates to National Convention, U.S. Senator and Congress",3253603,2879201,88%,4603
+1965,"Governor, State Senate and General Assembly",3151599,2293876,73%,4753
+1966,US Senate and Congress,3117575,2200177,71%,4817
+1967,State Senate,3091769,1992273,64%,4907
+1968,"Choice for President, Delegates to National Convention, U.S. Senator and Congress",3310043,2873489,87%,4947
+1969,Governor and General Assembly,3239374,2404056,74%,5081
+1970,US Senate and Congress,3167532,2209298,70%,5161
+1971,State Senate and General Assembly,3334361,2062586,62%,5174
+1972,"President, Delegates to National Conventions, US Senate and Congress",3672606,3100207,84%,5212
+1973,"Governor, State Senate and General Assembly",3541809,2175184,61%,5374
+1974,"Congress, Delegates to Democratic National Conference",3502175,2183962,62%,5461
+1975,General Assembly,3490370,2000165,57%,5509
+1976,"President, Delegates to National Conventions, US Senate and Congress",3769558,3037151,81%,5569
+1977,"Governor, State Senate and General Assembly",3656394,2173526,59%,5597
+1978,"US Senate, Congress, Disrict Delegates to Democratic Mid-Term Conference",3602225,2059724,57%,5607
+1979,General Assembly,3556481,1705784,48%,5607
+1980,"President, Delegates to National Conventions and Congress",3761428,2999879,80%,5609
+1981,"Governor, State Senate and General Assembly",3687795,2367808,64%,5647
+1982,US Senate and Congress,3681211,2286925,62%,5687
+1983,State Senate and General Assembly,3663069,1752788,48%,5688
+1984,"President, Delegates to National Convention, U.S. Senator and Congress",4072639,3215941,79%,5709
+1985,Governor and General Assembly,3885592,2005330,52%,5761
+1986,Congress,3777278,1639330,43%,5810
+1987,State Senate and General Assembly,3672866,1715724,47%,5826
+1988,"President, Delegates to National Convention, U.S. Senator and Congress",4010790,3102502,77%,5831
+1989,"Governor, State Senate and General Assembly",3810470,2286693,60%,5845
+1990,US Senate and Congress,3717536,1998894,54%,5846
+1991,State Senate and General Assembly,3678842,1862551,51%,5922
+1992,"President, Delegates to National Convention and Congress",4059472,3348312,82%,5862
+1993,"Governor, State Senate and General Assembly",3924706,2554190,65%,5997
+1994,US Senate and Congress,3859245,2131328,55%,6010
+1995,General Assembly,3905435,1502101,38%,6019
+1996,"President, Delegates to National Convention, U.S. Senator and Congress",4309820,3105110,72%,6064
+1997,"Governor, State Senate and General Assembly",4435216,2467959,56%,6107
+1998,Congress,4538820,1894496,42%,6104
+1999,General Assembly,4449471,1389864,31%,6126
+2000,"President, Delegates to National Convention, U.S. Senator and Congress",4699026,3293378,70%,6126
+2001,"Governor, State Senate and General Assembly",4617724,2275653,49%,6199
+2002,US Senate and Congress,4654897,2161105,46%,6266
+2003,State Senate and General Assembly,4541932,1544008,34%,6289
+2004,"President, Vice President and Congress",5009140,3638153,73%,6287
+2005,Governor and General Assembly,4832581,2346059,49%,6310
+2006,U.S. Senate and Congress,4848956,2315643,48%,6341
+2007,State Senate and General Assembly,4787102,1546701,32%,6292
+2008,"President, Delegates to National Convention, U.S. Senator and Congress",5378792,3910220,73%,6328
+2009,"Governor, State Senate (Special Election) and General Assembly",5223047,2451704,47%,6373
+2010,"Congress, State Senate (Special Election) and General Assembly (Special Election)",5245835,2194192,42%,6305
+2011,State Senate and General Assembly,5192757,1414253,27%,6363
+2012,"President, Vice President, Congress, U.S. Senate, General assembly (Special Election)",5505212,3683638,67%,6546
+2013,"Governor, State Senate and General Assembly",5493767,2177517,40%,6329
+2013,Special General Election,5491462,1352269,25%,6329
+2014,"U.S. Senate, Congress, Congress (Special Election)",5464669,1955042,36%,6333
+2015,State Senate and General Assembly,5406159,1170522,22%,6333
+2016,"President, Vice President, Congress, State Senate and General assembly",5808260,3957303,68%,6338
+2017,"Governor, Lt. Governor, State Senate and General Assembly",5703654,2198362,39%,6343
+2018,"U.S. Senate, Congress, State Senate (Special Election) and General Assembly (Special Election)",5838213,3248642,56%,6346
+2019,"State Senate (Special Election) and General Assembly",6066079,1623837,27%,6346
+2020,"President, Vice President, U.S. Senate and Congress, State Senate (Special Election) and General Assembly (Special Election)",6407297,4635686,72%,6346
+2021,"Governor, State Senate and General Assembly",6545250,2648814,40%,6346
+2022,"Congress, State Senate (Special Election) and General Assembly (Special Election)",6444613,2646689,41%,6386
+2023,State Senate and General Assembly,6459097,1760049,27%,6492
+2024,"President, Vice President, U.S. Senate and Congress",6682699,4321921,65%,6402
+2025,"Governor, State Senate (Special Election) and General Assembly",6549793,3369507,51%,6417
