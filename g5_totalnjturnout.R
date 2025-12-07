@@ -16,6 +16,10 @@ ggplot(nj_turnout, aes(x = Year, y = percent_cast))+
     y = "% of ballots cast" 
   )
 
+
+# -------------------------------------------------------------------------
+
+
 nj_turnout_2 <- read.csv("njturnout.txt")
 nj_turnout_2$percent_cast = nj_turnout_2$Total.Number.of.Ballots.Cast/nj_turnout_2$Total.Number.of.Persons.Entitled.to.Vote * 100
 
