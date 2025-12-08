@@ -13,6 +13,13 @@ nj_swing$margin_2024 <- (nj_swing$`2024_KAMALA D. HARRIS_Democratic`- nj_swing$`
 nj_swing$margin_2025 <- (nj_swing$`2025_SHERRILL_DEM`- nj_swing$`2025_CIATTARELLI_REP`)/(nj_swing$`2025_SHERRILL_DEM`+ nj_swing$`2025_CIATTARELLI_REP`)*100
 nj_swing$margin_swing <- nj_swing$margin_2025 - nj_swing$margin_2024
 
+
+flipped_counties <- c("GLOUCESTER", "CUMBERLAND", "ATLANTIC", "MORRIS", "PASSAIC")
+
+flipped_pts <- nj_2017_results_sf %>% 
+  filter(COUNTY %in% flipped_counties) %>% 
+  st_point_on_surface()
+
 ggplot(nj_swing) +
   geom_sf(aes(fill = margin_swing)) +
   scale_fill_gradient2(
@@ -27,4 +34,8 @@ ggplot(nj_swing) +
     subtitle = "Democratic (blue) vs Republican (red)",
     fill = "Change in Margin win (%)",
     caption = "Source: NJ DOE"
-  )
+  )+
+  geom_sf(data = flipped_pts,
+          shape = 8,
+          size = 3,
+          color = "black")

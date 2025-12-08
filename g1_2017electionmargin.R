@@ -2,6 +2,7 @@ library(tidyverse)
 library(maps)
 library(sf)
 library(ggplot2)
+library(dplyr)
 
 nj_2017_results <- read.csv("nj_gov_2017_csv.txt")
 nj_counties <- st_read("NJ_Counties_3857.shx")
@@ -12,6 +13,7 @@ nj_2017_results_sf$winner_votes <- pmax(nj_2017_results_sf$PHILIP.MURPHY..Democr
 nj_2017_results_sf$loser_votes <- pmin(nj_2017_results_sf$PHILIP.MURPHY..Democratic., nj_2017_results_sf$KIM.GUADAGNO..Republican.)
 nj_2017_results_sf$margin_positive <- ((nj_2017_results_sf$winner_votes - nj_2017_results_sf$loser_votes)/nj_2017_results_sf$total_votes)*100
 nj_2017_results_sf$margin <- ((nj_2017_results_sf$PHILIP.MURPHY..Democratic. - nj_2017_results_sf$KIM.GUADAGNO..Republican.)/nj_2017_results_sf$total_votes)*100
+
 
 ggplot(nj_2017_results_sf) +
   geom_sf(aes(fill = margin)) +
