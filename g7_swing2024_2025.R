@@ -26,12 +26,14 @@ ggplot(nj_swing) +
     low = "red",
     mid = "whitesmoke",
     high = "blue",
-    midpoint = 0
+    midpoint = 0,
+    limit = c(-80,80),
+    breaks = seq(-80,80,20)
   )+
   theme_void()+
   labs(
     title = "2024-2025 NJ  Election Swing ",
-    subtitle = "Democratic (blue) vs Republican (red)",
+    subtitle = "Democratic (blue) vs Republican (red)\nStars = flipped counties",
     fill = "Change in Margin win (%)",
     caption = "Source: NJ DOE"
   )+

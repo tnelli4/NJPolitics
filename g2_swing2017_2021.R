@@ -21,7 +21,9 @@ ggplot(nj_swing) +
     low = "red",
     mid = "whitesmoke",
     high = "blue",
-    midpoint = 0
+    midpoint = 0,
+    limits = c(-80,80),
+    breaks = seq(-80,80,20)
   )+
   theme_void()+
   labs(

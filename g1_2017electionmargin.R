@@ -3,6 +3,7 @@ library(maps)
 library(sf)
 library(ggplot2)
 library(dplyr)
+library(scales)
 
 nj_2017_results <- read.csv("nj_gov_2017_csv.txt")
 nj_counties <- st_read("NJ_Counties_3857.shx")
@@ -21,7 +22,9 @@ ggplot(nj_2017_results_sf) +
     low = "red",
     mid = "whitesmoke",
     high = "blue",
-    midpoint = 0
+    midpoint = 0,
+    limits = c(-80,80),
+    breaks = seq(-80,80,20)
   )+
   theme_void()+
   labs(

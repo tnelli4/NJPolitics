@@ -50,8 +50,9 @@ ggplot(nj_2017_results_sf) +
 
 p3 + p2 + p1
 
-census_data <- read.csv("census.csv")
-
+install.packages("readxl")
+library(readxl)
+census_data <- read_csv("hist.csv")
 
 
 
