@@ -18,7 +18,7 @@ fluidPage(
         plotOutput(
           "margin_map",
           height = 800,
-          click = "map_click",
+          dblclick = "map_click",
           brush = brushOpts(id = "map_brush", resetOnNew = TRUE)
         ),
         textOutput("county_text")

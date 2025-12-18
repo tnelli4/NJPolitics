@@ -42,9 +42,6 @@ function(input, output, session) {
   observeEvent(input$map_click, {
     map <- nj_2017_results_sf
     
-    # cat("CLICK x,y:", input$map_click$x, input$map_click$y, "\n")
-    # cat("MAP CRS:", st_crs(map)$input, "\n")
-    # 
     pt <- st_as_sf(
       data.frame(x = input$map_click$x, y = input$map_click$y),
       coords = c("x", "y")
@@ -52,20 +49,27 @@ function(input, output, session) {
     st_crs(pt) <- st_crs(map)
     
     hit <- st_within(pt, map)[[1]]
-    # cat("HIT length:", length(hit), "\n")
     
     if (length(hit) == 0) {
-      selected$county <- NULL
-      selected$margin <- NULL
-      selected$x <- NULL
-      selected$y <- NULL
+      return()
     } else {
       i <- hit[1]
-      selected$county <- map$COUNTY[i]
-      selected$margin <- map$margin[i]
-      selected$x <- input$map_click$x
-      selected$y <- input$map_click$y
-      cat("SELECTED:", selected$county, selected$margin, "\n")
+      clicked_county <- map$COUNTY[i]
+      
+      if (!is.null(selected$county) && selected$county == clicked_county) {
+        selected$county <- NULL
+        selected$margin <- NULL
+        selected$x <- NULL
+        selected$y <- NULL
+        # cat("DESELECTED:", clicked_county, "\n")
+      } else {
+
+                selected$county <- clicked_county
+        selected$margin <- map$margin[i]
+        selected$x <- input$map_click$x
+        selected$y <- input$map_click$y
+        # cat("SELECTED:", selected$county, selected$margin, "\n")
+      }
     }
   })
   
