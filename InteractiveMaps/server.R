@@ -18,6 +18,9 @@ function(input, output, session) {
     zoomValues$xmax <- input$map_brush$xmax
     zoomValues$ymin <- input$map_brush$ymin
     zoomValues$ymax <- input$map_brush$ymax
+    
+    session$resetBrush("map_brush")
+    
   })
   
   observeEvent(input$reset,{
@@ -25,38 +28,55 @@ function(input, output, session) {
     zoomValues$xmax <- NULL
     zoomValues$ymin <- NULL
     zoomValues$ymax <- NULL
+    session$resetBrush("map_brush")
+    
   })
   
   selected <- reactiveValues(
     county = NULL,
-    margin = NULL
+    margin = NULL,
+    x = NULL,
+    y = NULL
   )
   
-  observeEvent(input$map_click,{
+  observeEvent(input$map_click, {
     map <- nj_2017_results_sf
     
-    point <- st_as_sf(data.frame(x = input$map_click$x, y = input$map_click$y),
-                      coords = c("x", "y"))
+    # cat("CLICK x,y:", input$map_click$x, input$map_click$y, "\n")
+    # cat("MAP CRS:", st_crs(map)$input, "\n")
+    # 
+    pt <- st_as_sf(
+      data.frame(x = input$map_click$x, y = input$map_click$y),
+      coords = c("x", "y")
+    )
+    st_crs(pt) <- st_crs(map)
     
-    st_crs(point) <-st_crs(map)
+    hit <- st_within(pt, map)[[1]]
+    # cat("HIT length:", length(hit), "\n")
     
-    hit <- st_within(point, map)[[1]]
-    
-    if(length(hit) == 0){
+    if (length(hit) == 0) {
       selected$county <- NULL
       selected$margin <- NULL
+      selected$x <- NULL
+      selected$y <- NULL
     } else {
-      a <- hit[1]
-      selected$county <- map$COUNTY[a]
-      selected$margin <- map$margin[a]
+      i <- hit[1]
+      selected$county <- map$COUNTY[i]
+      selected$margin <- map$margin[i]
+      selected$x <- input$map_click$x
+      selected$y <- input$map_click$y
+      cat("SELECTED:", selected$county, selected$margin, "\n")
     }
   })
   
-    output$county_text <-renderText({
-      if(!is.null(selected$county)){
-        paste(selected$county, "had a margin of ", selected$margin)
-      }
-    })
+  
+  output$county_text <- renderText({
+    if (is.null(selected$county)) {
+      ""   
+    } else {
+      paste0(selected$county, " had a margin of ", round(selected$margin, 1), "%")
+    }
+  })
   
     output$margin_map <- renderPlot({
       
@@ -85,6 +105,17 @@ function(input, output, session) {
           coord_sf(xlim=c(zoomValues$xmin,zoomValues$xmax),
                    ylim=c(zoomValues$ymin,zoomValues$ymax))
       }
+      
+      
+      if (!is.null(selected$county)) {
+        g <- g + annotate(
+          "label",
+          x = selected$x,
+          y = selected$y,
+          label = paste0(selected$county, ": ", round(selected$margin, 1), "%")
+        )
+      }
+      
       g
   
     })

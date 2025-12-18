@@ -14,15 +14,15 @@ fluidPage(
         ),
       
         # Show a plot of the generated distribution
-        mainPanel(
-          actionButton("reset", "Reset Map Zoom"),
-            plotOutput(
-              "margin_map",
-              height = 800,
-              click = "map_click",
-              brush = brushOpts(id = "map_brush", resetOnNew = TRUE)),
-            textOutput("county_text"),
-
-        )
+      mainPanel(
+        plotOutput(
+          "margin_map",
+          height = 800,
+          click = "map_click",
+          brush = brushOpts(id = "map_brush", resetOnNew = TRUE)
+        ),
+        textOutput("county_text")
+      )
+      
     )
 )
