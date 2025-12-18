@@ -1,3 +1,10 @@
+library(tidyverse)
+library(maps)
+library(sf)
+library(ggplot2)
+library(dplyr)
+library(scales)
+
 nj_2017_results <- read.csv("nj_gov_2017_csv.txt")
 nj_2017_results <- nj_2017_results %>%
   rename_with(~ paste0("2017_", .x), -COUNTY)
@@ -50,7 +57,9 @@ ggplot(scatter_data2017, aes(x = change_dem_reg_share2017_pp, y = change_margin2
     x = "Δ Democratic registration share (percentage points), 2017 → 2025",
     y = "Δ Democratic two-party margin (percentage points), 2017 → 2025",
     caption = "Sources: NJ Division of Elections (results, 2017 & 2025); SVRS registration snapshots (on/near General Election Day). Two-party margin uses D and R only."
-  )
+  )+
+  geom_vline(xintercept = 0, linetype = "dotted") +
+  geom_hline(yintercept = 0, linetype = "dotted") 
 
 
 scatter_data2021 <- nj_voter_reg %>%
