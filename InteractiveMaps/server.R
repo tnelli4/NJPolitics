@@ -122,10 +122,10 @@ function(input, output, session) {
       }
     })
     
+  
     output$margin_map <- renderPlot({
-      
       map <- nj_2017_results_sf
-
+      
       g <- ggplot(map)+
         geom_sf(aes(fill = margin))+
         scale_fill_gradient2(
@@ -144,40 +144,49 @@ function(input, output, session) {
           caption = "Source: NJ DOE"
         )
       
+      if (!is.null(hovered$county)) {
+        hovered_data <- filter(map, COUNTY == hovered$county)
+        g <- g + geom_sf(data = hovered_data, 
+                         linewidth = 1, 
+                         color = "black", 
+                         fill = NA)
+      }
+      
       if(!is.null(zoomValues$xmin)){
         g <- g +
           coord_sf(xlim=c(zoomValues$xmin,zoomValues$xmax),
-                   ylim=c(zoomValues$ymin,zoomValues$ymax))
+                   ylim=c(zoomValues$ymin,zoomValues$ymax),
+                   expand = FALSE,
+                   clip = "off")
+      } else {
+        g <- g + coord_sf(expand = FALSE, clip = "off")
       }
-      
       
       if (!is.null(selected$county)) {
         g <- g + annotate(
           "label",
           x = selected$x,
           y = selected$y,
+          fill = "grey",
           label = paste0(selected$county, ": ", round(selected$margin, 1), "%")
         )
       }
       
       if (!is.null(hovered$county)) {
-        # Check if this county is already permanently selected
-        is_selected <- any(sapply(selected$counties, function(c) c$name == hovered$county))
+        hovered_data <- filter(map, COUNTY == hovered$county)
+        centroid <- st_centroid(st_geometry(hovered_data))
+        coords <- st_coordinates(centroid)
         
-        if (!is_selected) {
-          g <- g + annotate(
-            "label",
-            x = hovered$x,
-            y = hovered$y,
-            label = paste0(hovered$county, ": ", round(hovered$margin, 1), "%"),
-            fill = "grey",  # Different color for hover
-            alpha = 0.7
-          )
-        }
+        g <- g + annotate(
+          "label",
+          x = coords[1],
+          y = coords[2],
+          label = paste0(hovered_data$COUNTY, ": ", round(hovered_data$margin, 1), "%"),
+          size = 4,
+          fill = "grey",
+          fontface = "bold"
+        )
       }
-      
       g
-  
     })
-
 }
