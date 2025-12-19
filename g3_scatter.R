@@ -61,6 +61,9 @@ ggplot(scatter_data2017, aes(x = change_dem_reg_share2017_pp, y = change_margin2
   geom_vline(xintercept = 0, linetype = "dotted") +
   geom_hline(yintercept = 0, linetype = "dotted") 
 
+# -------------------------------------------------------------------------
+
+
 
 scatter_data2021 <- nj_voter_reg %>%
   select(COUNTY, change_dem_reg_share2021_pp) %>%
