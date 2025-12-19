@@ -18,6 +18,7 @@ fluidPage(
         plotOutput(
           "margin_map",
           height = 800,
+          hover = hoverOpts(id = "map_hover"),
           dblclick = "map_click",
           brush = brushOpts(id = "map_brush", resetOnNew = TRUE)
         ),

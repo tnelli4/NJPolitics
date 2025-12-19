@@ -12,6 +12,20 @@ function(input, output, session) {
     ymax = NULL
   )
   
+  hovered <- reactiveValues(
+    county = NULL,
+    margin = NULL,
+    x = NULL,
+    y = NULL
+  )
+  
+  selected <- reactiveValues(
+    county = NULL,
+    margin = NULL,
+    x = NULL,
+    y = NULL
+  )
+  
   observeEvent(input$map_brush,{
     print(input$map_brush)
     zoomValues$xmin <- input$map_brush$xmin
@@ -32,12 +46,38 @@ function(input, output, session) {
     
   })
   
-  selected <- reactiveValues(
-    county = NULL,
-    margin = NULL,
-    x = NULL,
-    y = NULL
-  )
+  observeEvent(input$map_hover, {
+    map <- nj_2017_results_sf
+    
+    if (is.null(input$map_hover)) {
+      hovered$county <- NULL
+      hovered$margin <- NULL
+      hovered$x <- NULL
+      hovered$y <- NULL
+      return()
+    }
+    
+    pt <- st_as_sf(
+      data.frame(x = input$map_hover$x, y = input$map_hover$y),
+      coords = c("x", "y")
+    )
+    st_crs(pt) <- st_crs(map)
+    
+    hit <- st_within(pt, map)[[1]]
+    
+    if (length(hit) == 0) {
+      hovered$county <- NULL
+      hovered$margin <- NULL
+      hovered$x <- NULL
+      hovered$y <- NULL
+    } else {
+      i <- hit[1]
+      hovered$county <- map$COUNTY[i]
+      hovered$margin <- map$margin[i]
+      hovered$x <- input$map_hover$x
+      hovered$y <- input$map_hover$y
+    }
+  })
   
   observeEvent(input$map_click, {
     map <- nj_2017_results_sf
@@ -74,14 +114,14 @@ function(input, output, session) {
   })
   
   
-  output$county_text <- renderText({
-    if (is.null(selected$county)) {
-      ""   
-    } else {
-      paste0(selected$county, " had a margin of ", round(selected$margin, 1), "%")
-    }
-  })
-  
+    output$county_text <- renderText({
+      if (is.null(selected$county)) {
+        ""   
+      } else {
+        paste0(selected$county, " had a margin of ", round(selected$margin, 1), "%")
+      }
+    })
+    
     output$margin_map <- renderPlot({
       
       map <- nj_2017_results_sf
@@ -118,6 +158,22 @@ function(input, output, session) {
           y = selected$y,
           label = paste0(selected$county, ": ", round(selected$margin, 1), "%")
         )
+      }
+      
+      if (!is.null(hovered$county)) {
+        # Check if this county is already permanently selected
+        is_selected <- any(sapply(selected$counties, function(c) c$name == hovered$county))
+        
+        if (!is_selected) {
+          g <- g + annotate(
+            "label",
+            x = hovered$x,
+            y = hovered$y,
+            label = paste0(hovered$county, ": ", round(hovered$margin, 1), "%"),
+            fill = "grey",  # Different color for hover
+            alpha = 0.7
+          )
+        }
       }
       
       g
